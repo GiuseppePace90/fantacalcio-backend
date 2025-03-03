@@ -32,10 +32,12 @@ database.Connect().then(
 /* Initialize app */
 function serverInit() {
 
+  const context = '/fanta/'
+
     app.use(cors());
     app.use(express.json());
-    app.use('/', routerSrvModule);
-    app.use('/api', routerCtrlModule);
+    app.use(context, routerSrvModule);
+    app.use(context +'api/', routerCtrlModule);
 
     wsConnection();
 }
